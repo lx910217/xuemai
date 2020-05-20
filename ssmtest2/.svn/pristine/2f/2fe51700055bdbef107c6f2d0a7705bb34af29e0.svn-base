@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gx.dao.EducationEfMapper">
+	<resultMap id="BaseResultMap" type="com.gx.po.EducationEf">
+
+		<constructor>
+			<arg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+			<arg column="stu_name" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="stu_sex" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="stu_grade" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="parent_name" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="parent_phone" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="list_id" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="lead_id" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="call_id" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="city" javaType="java.lang.String" jdbcType="VARCHAR" />
+			<arg column="status" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="created_time" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="update_time" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="q_Other" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="q_ChildAge" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="q_RegistrationActivities"
+				javaType="java.lang.String" jdbcType="VARCHAR" />
+			<arg column="interest_degree" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+
+			<arg column="talk_time" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="call_count" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+
+			<arg column="campaign_id" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+
+
+
+		</constructor>
+	</resultMap>
+
+	<sql id="Base_Column_List">
+
+		id,
+		stu_name,
+		stu_sex,
+		stu_grade,
+		parent_name,
+		parent_phone,
+		list_id,
+		lead_id,
+		call_id,
+		city,
+		status,
+		created_time,
+		update_time,
+		q_Other,
+		q_ChildAge,
+		q_RegistrationActivities,
+		interest_degree,
+		talk_time,
+		call_count,
+		campaign_id
+		
+		
+	</sql>
+
+	<select id="selectByPrimaryKeyforEf"
+		parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+		select
+		<include refid="Base_Column_List" />
+		from ai_education_ef
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+
+
+	<insert id="insert" parameterType="com.gx.po.EducationEf">
+
+		insert into ai_education_ef (
+
+
+		stu_name,
+		stu_sex,
+		stu_grade,
+		parent_name,
+		parent_phone,
+		list_id,
+		lead_id,
+		call_id,
+		city,
+		status,
+		created_time,
+		update_time,
+		q_Other,
+		q_ChildAge,
+		q_RegistrationActivities,
+		interest_degree,
+		
+		talk_time,
+		call_count,
+		campaign_id
+
+
+		)
+		values (
+		#{stu_name,jdbcType=VARCHAR},
+		#{stu_sex,jdbcType=VARCHAR},
+		#{stu_grade,jdbcType=VARCHAR},
+		#{parent_name,jdbcType=VARCHAR},
+		#{parent_phone,jdbcType=VARCHAR},
+		#{list_id,jdbcType=VARCHAR},
+		#{lead_id,jdbcType=VARCHAR},
+		#{call_id,jdbcType=VARCHAR},
+		#{city,jdbcType=VARCHAR},
+		#{status,jdbcType=VARCHAR},
+		#{created_time,jdbcType=VARCHAR},
+		#{update_time,jdbcType=VARCHAR},
+		#{q_Other,jdbcType=VARCHAR},
+		#{q_ChildAge,jdbcType=VARCHAR},
+		#{q_RegistrationActivities,jdbcType=VARCHAR},
+		#{interest_degree,jdbcType=VARCHAR},
+		#{talk_time,jdbcType=VARCHAR},
+		#{call_count,jdbcType=VARCHAR},
+		#{campaign_id,jdbcType=VARCHAR}
+		
+		
+		
+		
+		
+		)
+	</insert>
+	<select id="findBySQLforEducationEf" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from ai_education_ef
+		${findBySQLforEducationEf}
+	</select>
+
+	<select id="findforEEF" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from ai_education_ef
+		<if test="list_id !=null">
+			WHERE list_id = #{list_id,jdbcType=VARCHAR}
+		</if>
+		<if test="parent_phone !=null">
+			and parent_phone = #{parent_phone,jdbcType=VARCHAR}
+		</if>
+
+	</select>
+
+
+	<update id="updateByPrimaryKeyEducationEf"
+		parameterType="com.gx.po.EducationEf">
+
+		update ai_education_ef
+		<set>
+			<if test="stu_name != null">
+				stu_name = #{stu_name,jdbcType=VARCHAR},
+			</if>
+			<if test="stu_sex != null">
+				stu_sex = #{stu_sex,jdbcType=VARCHAR},
+			</if>
+			<if test="stu_grade != null">
+				stu_grade = #{stu_grade,jdbcType=VARCHAR},
+			</if>
+			<if test="parent_name != null">
+				parent_name = #{parent_name,jdbcType=VARCHAR},
+			</if>
+			<if test="parent_phone != null">
+				parent_phone = #{parent_phone,jdbcType=VARCHAR},
+			</if>
+			<if test="list_id != null">
+				list_id = #{list_id,jdbcType=VARCHAR},
+			</if>
+			<if test="lead_id != null">
+				lead_id = #{lead_id,jdbcType=VARCHAR},
+			</if>
+			<if test="call_id != null">
+				call_id = #{call_id,jdbcType=VARCHAR},
+			</if>
+			<if test="city != null">
+				city = #{city,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=VARCHAR},
+			</if>
+			<if test="created_time != null">
+				created_time = #{created_time,jdbcType=VARCHAR},
+			</if>
+			<if test="update_time != null">
+				update_time = #{update_time,jdbcType=VARCHAR},
+			</if>
+			<if test="q_Other != null">
+				q_Other = #{q_Other,jdbcType=VARCHAR},
+			</if>
+			<if test="q_ChildAge != null">
+				q_ChildAge = #{q_ChildAge,jdbcType=VARCHAR},
+			</if>
+			<if test="q_RegistrationActivities != null">
+				q_RegistrationActivities = #{q_RegistrationActivities,jdbcType=VARCHAR},
+			</if>
+			<if test="interest_degree != null">
+				interest_degree = #{interest_degree,jdbcType=VARCHAR},
+			</if>
+			
+			<if test="talk_time != null">
+				talk_time = #{talk_time,jdbcType=VARCHAR},
+			</if>
+			<if test="call_count != null">
+				call_count = #{call_count,jdbcType=VARCHAR},
+			</if>
+			
+			<if test="campaign_id != null">
+				campaign_id = #{campaign_id,jdbcType=VARCHAR}
+			</if>
+			
+			
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+
+
+	<select id="selectYinFu" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from ai_education_ef
+		${selectYinFu} limit ${currentPage},${pageSize}
+	</select>
+
+
+
+
+</mapper>

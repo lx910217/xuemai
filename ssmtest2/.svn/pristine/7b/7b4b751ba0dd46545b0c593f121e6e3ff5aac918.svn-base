@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gx.dao.TotalMapper">
+	<resultMap id="BaseResultMap" type="com.gx.po.Total">
+		<constructor>
+			<arg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+			<arg column="assignment_name" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="campaign_id" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="list_id" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="start_time" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="end_time" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="count" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="answer" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="noanswer" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="connection_rate" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="total_time" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="avg_time" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="potential_customers" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="unintentional_customers" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="general_customers" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+		</constructor>
+	</resultMap>
+	<sql id="Base_Column_List">
+
+		id,
+		assignment_name,
+		campaign_id,
+		list_id,
+		start_time,
+		end_time,
+		count,
+		answer,
+		noanswer,
+		connection_rate,
+		total_time,
+		avg_time,
+		potential_customers,
+		unintentional_customers,
+		general_customers
+
+	</sql>
+	<!-- 插入数据 -->
+	<insert id="insert" parameterType="com.gx.po.Total">
+
+		insert into ai_report_total (
+		assignment_name,
+		campaign_id,
+		list_id,
+		start_time,
+		end_time,
+		count,
+		answer,
+		noanswer,
+		connection_rate,
+		total_time,
+		avg_time,
+		potential_customers,
+		unintentional_customers,
+		general_customers
+
+		) values(
+
+		#{assignment_name,jdbcType=VARCHAR},
+		#{campaign_id,jdbcType=VARCHAR},
+		#{list_id,jdbcType=VARCHAR},
+		#{start_time,jdbcType=VARCHAR},
+		#{end_time,jdbcType=VARCHAR},
+		#{count,jdbcType=VARCHAR},
+		#{answer,jdbcType=VARCHAR},
+		#{noanswer,jdbcType=VARCHAR},
+		<!-- #{connection_rate,jdbcType=VARCHAR}, #{avg_time,jdbcType=VARCHAR}, -->
+		(answer/count),
+		#{total_time,jdbcType=VARCHAR},
+		(total_time/count),
+		#{potential_customers,jdbcType=VARCHAR},
+		#{unintentional_customers,jdbcType=VARCHAR},
+		#{general_customers,jdbcType=VARCHAR}
+
+		)
+
+	</insert>
+	<!-- 条件查询 -->
+	<select id="findBySQLforTotal" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from
+		ai_report_total
+		${findBySQLforTotal}
+
+	</select>
+	<!-- 根据List_id条件查询 -->
+	<select id="findByListID" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from
+		ai_report_total
+		where
+		list_id = #{list_id,jdbcType=VARCHAR}
+	</select>
+
+
+
+
+
+	<!-- 数据更新 -->
+	<update id="updateByListId" parameterType="com.gx.po.Total">
+
+		update ai_report_total
+		<set>
+			<if test="assignment_name != null">
+				assignment_name = #{assignment_name,jdbcType=VARCHAR},
+			</if>
+			<if test="campaign_id != null">
+				campaign_id = #{campaign_id,jdbcType=VARCHAR},
+			</if>
+			<!-- <if test="list_id != null">
+				,list_id = #{list_id,jdbcType=VARCHAR}
+			</if> -->
+			<if test="start_time != null">
+				start_time = #{start_time,jdbcType=VARCHAR},
+			</if>
+			<if test="end_time != null">
+				 end_time = #{end_time,jdbcType=VARCHAR},
+			</if>
+			<if test="count != null">
+				 count = #{count,jdbcType=VARCHAR},
+			</if>
+			<if test="answer != null">
+				 answer = #{answer,jdbcType=VARCHAR},
+			</if>
+			<if test="noanswer != null">
+				 noanswer = #{noanswer,jdbcType=VARCHAR},
+			</if>
+		 <!--    <if test="connection_rate != null"> -->
+				 connection_rate = (answer/count),
+		<!-- 	</if> -->
+			<if test="total_time != null">
+				 total_time = #{total_time,jdbcType=VARCHAR},
+			</if>
+			<!-- <if test="avg_time != null"> -->
+				 avg_time = (total_time/count),
+			<!-- </if> -->
+			<if test="potential_customers != null">
+				 potential_customers =
+				#{potential_customers,jdbcType=VARCHAR},
+			</if>
+			<if test="unintentional_customers != null">
+				 unintentional_customers=
+				#{unintentional_customers,jdbcType=VARCHAR},
+			</if>
+			<if test="general_customers != null">
+				 general_customers =
+				#{general_customers,jdbcType=VARCHAR}
+			</if>
+			</set>
+			where list_id = #{list_id,jdbcType=VARCHAR}
+		
+	</update>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<accessrules>
+			<accessrule kind="accessible" pattern="**"/>
+		</accessrules>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/lib/jsonJar/commons-beanutils-1.7.0.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/lib/jsonJar/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/lib/jsonJar/commons-httpclient-3.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/lib/jsonJar/commons-lang-2.3.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/lib/jsonJar/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/lib/jsonJar/ezmorph-1.0.3.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/lib/jsonJar/json-lib-2.2.3-jdk15.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/lib/httpclient_new/httpclient-4.5.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/lib/httpclient_new/httpcore-4.4.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/lib/httpclient_new/commons-codec-1.9.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/lib/httpclient_new/commons-httpclient-3.0.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/lib/httpclient_new/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/okhttp-2.7.5.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/okio-1.14.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/lib/fastjson/fastjson-1.2.2-sources.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/lib/fastjson/fastjson-1.2.2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/lib/poi/poi-3.17.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/lib/poi/poi-ooxml-3.17.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/lib/poi/poi-ooxml-schemas-3.17.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/lib/poi/xmlbeans-2.6.0.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/lib/poi/commons-collections4-4.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/lib/poi/commons-io-2.6.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/lib/xlsx/xlsx-streamer-0.2.10.jar"/>
+	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
+</classpath>

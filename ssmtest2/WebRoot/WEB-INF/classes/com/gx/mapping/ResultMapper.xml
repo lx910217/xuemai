@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gx.dao.ResultMapper">
+	<resultMap id="BaseResultMap" type="com.gx.po.Result">
+
+		<constructor>
+			<arg column="id" javaType="java.lang.String" jdbcType="VARCHAR" />
+			<arg column="answer" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="answerTypeName" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="channelName" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="createdTime" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="fieldName" javaType="java.lang.Integer"
+				jdbcType="INTEGER" />
+			<arg column="fromUser" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="inputModel" javaType="java.lang.Integer"
+				jdbcType="INTEGER" />
+			<arg column="inputModelStr" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="question" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="robotName" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="standardQuestion" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			<arg column="standardQuestionId" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+				
+			<arg column="campaign_id" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+				
+			<arg column="count" javaType="java.lang.String"
+				jdbcType="VARCHAR" />
+			
+			
+
+		</constructor>
+	</resultMap>
+
+	<sql id="Base_Column_List">
+
+		id,
+answer,
+answerTypeName,
+channelName,
+createdTime,
+fieldName,
+fromUser,
+inputModel,
+inputModelStr,
+question,
+robotName,
+standardQuestion,
+standardQuestionId,
+campaign_id,
+count
+		
+		
+		
+			</sql>
+
+
+	<select id="selectByPrimaryKeyforResult"
+		parameterType="java.lang.String" resultMap="BaseResultMap">
+
+		select
+		<include refid="Base_Column_List" />
+		from ai_result
+		where id = #{id,jdbcType=VARCHAR}
+	</select>
+
+
+	<insert id="insert" parameterType="com.gx.po.Result">
+
+		insert into ai_result (
+
+id,
+answer,
+answerTypeName,
+channelName,
+createdTime,
+fieldName,
+fromUser,
+inputModel,
+inputModelStr,
+question,
+robotName,
+standardQuestion,
+standardQuestionId,
+campaign_id,
+count
+
+
+
+	)values (
+		#{id,jdbcType=VARCHAR},
+		#{answer,jdbcType=VARCHAR},
+		#{answerTypeName,jdbcType=VARCHAR},
+		#{channelName,jdbcType=VARCHAR},
+		#{createdTime,jdbcType=VARCHAR},
+		#{fieldName,jdbcType=INTEGER},
+		#{fromUser,jdbcType=VARCHAR},
+		#{inputModel,jdbcType=INTEGER},
+		#{inputModelStr,jdbcType=VARCHAR},
+		#{question,jdbcType=VARCHAR},
+		#{robotName,jdbcType=VARCHAR},
+		#{standardQuestion,jdbcType=VARCHAR},
+		#{standardQuestionId,jdbcType=VARCHAR},
+		#{campaign_id,jdbcType=VARCHAR},
+		#{count,jdbcType=VARCHAR}
+
+		)
+	</insert>
+	<select id="findBySQLforResult" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from ai_result
+		${findBySQLforResult}
+	</select>
+	<!-- 热词分析 -->
+	<select id="SelectHighWords" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		,count( question ) AS count
+		from ai_result
+		${findBySQLforWords}
+		<!-- SELECT DISTINCT answer,count( answer ) AS count FROM ai_result WHERE 
+			robotName=#{robotName,jdbcType=VARCHAR} GROUP BY answer ORDER BY count DESC 
+			LIMIT 10 -->
+
+	</select>
+
+
+</mapper>
